@@ -1,8 +1,5 @@
 package com.sedmelluq.discord.lavaplayer.source.youtube;
 
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,11 +47,11 @@ public class YoutubeSignatureCipher {
    * @param scriptEngine JavaScript engine to execute function
    * @return The result of the n parameter transformation
    */
-  public String transform(String text, ScriptEngine scriptEngine) throws ScriptException, NoSuchMethodException {
+  public String transform(String text, RhinoEngineWrapper scriptEngine) throws ScriptException, NoSuchMethodException {
     String transformed;
 
     scriptEngine.eval("n=" + nFunction);
-    transformed = (String) ((Invocable) scriptEngine).invokeFunction("n", text);
+    transformed = (String) scriptEngine.invokeFunction("n", text);
 
     return transformed;
   }

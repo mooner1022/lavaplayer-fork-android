@@ -11,8 +11,6 @@ import org.mozilla.javascript.engine.RhinoScriptEngineFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -82,7 +80,7 @@ public class YoutubeSignatureCipherManager implements YoutubeSignatureResolver {
 
   private final ConcurrentMap<String, YoutubeSignatureCipher> cipherCache;
   private final Set<String> dumpedScriptUrls;
-  private final ScriptEngine scriptEngine;
+  private final RhinoEngineWrapper scriptEngine;
   private final Object cipherLoadLock;
 
   /**
@@ -91,7 +89,7 @@ public class YoutubeSignatureCipherManager implements YoutubeSignatureResolver {
   public YoutubeSignatureCipherManager() {
     this.cipherCache = new ConcurrentHashMap<>();
     this.dumpedScriptUrls = new HashSet<>();
-    this.scriptEngine = new RhinoScriptEngineFactory().getScriptEngine();
+    this.scriptEngine = new RhinoEngineWrapper();
     this.cipherLoadLock = new Object();
   }
 
