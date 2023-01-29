@@ -75,7 +75,7 @@ public class YoutubeSignatureCipherManager implements YoutubeSignatureResolver {
       "function\\(\\s*(\\w+)\\s*\\)\\s*\\{var" +
           "\\s*(\\w+)=\\1\\.split\\(\"\"\\),\\s*(\\w+)=(\\[.*?\\]);\\s*\\3\\[\\d+\\]" +
           "(.*?try)(\\{.*?\\})catch\\(\\s*(\\w+)\\s*\\)\\s*\\" +
-          "{\\s*return\"enhanced_except_([A-z0-9-]+)\"\\s*\\+\\s*\\1\\s*}\\s*return\\s*\\2\\.join\\(\"\"\\)\\};", Pattern.DOTALL
+          "{\\s*return\"enhanced_except_([A-z0-9-]+)\"\\s*\\+\\s*\\1\\s*\\}\\s*return\\s*\\2\\.join\\(\"\"\\)\\};", Pattern.DOTALL
   );
 
   private static final Pattern signatureExtraction = Pattern.compile("/s/([^/]+)/");
